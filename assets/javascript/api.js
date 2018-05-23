@@ -3,7 +3,7 @@ var WUURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
 
 var WUFORECASTPARMS = {
     appid: WUAPIKEY,
-    cnt: 10
+    cnt: 5
 }
 
 function makeQueryString(url, params) {
@@ -11,7 +11,7 @@ function makeQueryString(url, params) {
 }
 
 
-function get5DayForecastByLatLon(lat, lon) {
+function getForecastByLatLon(lat, lon) {
     var qparams = WUFORECASTPARMS;
     qparams.lat = lat;
     qparams.lon = lon;
@@ -25,9 +25,22 @@ function get5DayForecastByLatLon(lat, lon) {
     });
 }
 
-// test stuff
+function getForecastByCity(city) {
+    var qparams = WUFORECASTPARMS;
+    qparams.q = city;
+    var qstring = makeQueryString(WUURL, qparams);
+
+    $.ajax({
+        url: qstring,
+        method: 'GET'
+    }).then(function(resp) {
+        console.log(resp);
+    });
+}
+
+// test stuff remove later
 var lon = -117.8282121;
 var lat = 33.658895099999995;
  
-resp = get5DayForecastByLatLon(lat, lon);
-console.log(resp);
+resp = getForecastByLatLon(lat, lon);
+resp = getForecastByCity('Milan');
