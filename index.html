@@ -11,7 +11,31 @@
 <body>
     
 
+    <div id="input">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="name" class="form-control" id="name-input" aria-describedby="Name" placeholder="Enter Name">
+                <small id="NamelHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputLocation1">Location</label>
+                <input type="Location" class="form-control" id="Location-input" placeholder="Location">
+            </div>
+            <div class="form-group">
+                <div action="/action_page.php">
+                    Start Date:
+                    <input type="date" name="startDate">
+                </div>
+                <div action="/action_page.php">
+                    End Date:
+                    <input type="date" name="startDate">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
 
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
