@@ -11,3 +11,7 @@ body {
   .bbackground {
     width: 800px;
   }
+
+  .title {
+     font-size: 60px; 
+  }
