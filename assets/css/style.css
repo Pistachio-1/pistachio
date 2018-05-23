@@ -1,12 +1,19 @@
-body {
+.home {
     text-align: center;
     color:#fff;
     padding-top:10em;
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
+    background-color: #9FD5ED;
   }
   
   * { color:#fff; text-decoration: none;}
+
+ .agenda {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    background-color: #9FD5ED;
+ } 
 
 .bbackground {
     width: 800px;
@@ -23,6 +30,10 @@ transbox {
 form {
       margin: 40px auto;
       padding: 20px;
+<<<<<<< HEAD
+=======
+      width: 250px;
+>>>>>>> aff801f1bd4ffe1b97d2baf11c5354dcda34bc1a
       color: black;
 }
 input {
@@ -45,5 +56,6 @@ button {
 
 .title {
      font-size: 60px; 
-     color: white;
   }
+  * { color:#fff; text-decoration: none;}
+  
