@@ -13,11 +13,9 @@
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
     background-color: #9FD5ED;
+    color: black;
  } 
 
-.bbackground {
-    width: 800px;
-  }
 
 transbox {
     margin: 30px;
@@ -28,13 +26,14 @@ transbox {
 }
 
 form {
-      margin: 40px auto;
-      padding: 20px;
+      margin: 10px auto;
+      padding: 10px;
       color: black;
 }
 input {
     padding: 1px 15px;
     font-size: 18px;
+    width: 100px;
 }
 
 .form-group{
@@ -45,13 +44,28 @@ input {
 
 button {
     margin-top: 15px;
-    background-color: rgb(89, 139, 231);
+    background-color: rgb(46, 79, 141);
     padding: 10px 30px 10px 30px;
     font-size: 15px;
 }
 
+.top {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.863);
+    color: black;
+    width: 100%;
+    font-weight: bold;
+}
+
+.nameInAgenda {
+    color: black;
+    font-size: 20px;
+}
+
+
 .title {
-     font-size: 60px; 
-  }
-  * { color:#fff; text-decoration: none;}
+    font-size: 60px; 
+    color:#fff; 
+    text-decoration: none;
+}
   
