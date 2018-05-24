@@ -8,19 +8,13 @@ body {
   
   * { color:#fff; text-decoration: none;}
 
-<<<<<<< HEAD
-.bbackground {
-    width: 800px;
-  }
-=======
- .agenda {
+.agenda {
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
     background-color: #9FD5ED;
     color: black;
  } 
 
->>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
 
 
 form {
@@ -62,14 +56,8 @@ button {
 
 
 .title {
-<<<<<<< HEAD
-     font-size: 60px; 
-     color: white;
-  }
-=======
     font-size: 60px; 
     color:#fff; 
     text-decoration: none;
 }
   
->>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
