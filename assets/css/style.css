@@ -1,14 +1,18 @@
-.home {
+body {
     text-align: center;
     color:#fff;
     padding-top:10em;
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
-    background-color: #9FD5ED;
   }
   
   * { color:#fff; text-decoration: none;}
 
+<<<<<<< HEAD
+.bbackground {
+    width: 800px;
+  }
+=======
  .agenda {
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
@@ -16,14 +20,8 @@
     color: black;
  } 
 
+>>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
 
-transbox {
-    margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.6;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
-}
 
 form {
       margin: 10px auto;
@@ -64,8 +62,14 @@ button {
 
 
 .title {
+<<<<<<< HEAD
+     font-size: 60px; 
+     color: white;
+  }
+=======
     font-size: 60px; 
     color:#fff; 
     text-decoration: none;
 }
   
+>>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
