@@ -39,8 +39,18 @@ database.ref().on("child_added", function(snapshot) {
 });
 
 function addInput(){
+    //adding into agenda.html//
     name = $("#name").val().trim();
     location = $('#city').val().trim();
     deaprting = $('#departing').val().trim();
     returning = $('#returning').val().trim();
+
+    $("").append(name)
+    $("").append(location)
+    $("").append(departing)
+    $("").append(returning)
+}
+
+function addItinerary() {
+    
 }
