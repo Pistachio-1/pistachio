@@ -3,10 +3,10 @@ var config = {
     authDomain: "pistachio-4a3df.firebaseapp.com",
     databaseURL: "https://pistachio-4a3df.firebaseio.com",
     projectId: "pistachio-4a3df",
-    storageBucket: "",
+    storageBucket: "pistachio-4a3df.appspot.com",
     messagingSenderId: "1062361334522"
   };
-firebase.initializeApp(config);
+  firebase.initializeApp(config);
 var database = firebase.database();
 
 var name = [];
