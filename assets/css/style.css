@@ -8,19 +8,30 @@ body {
   
   * { color:#fff; text-decoration: none;}
 
+<<<<<<< HEAD
 .bbackground {
     width: 800px;
   }
+=======
+ .agenda {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    background-color: #9FD5ED;
+    color: black;
+ } 
+
+>>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
 
 
 form {
-      margin: 40px auto;
-      padding: 20px;
+      margin: 10px auto;
+      padding: 10px;
       color: black;
 }
 input {
     padding: 1px 15px;
     font-size: 18px;
+    width: 100px;
 }
 
 .form-group{
@@ -31,12 +42,34 @@ input {
 
 button {
     margin-top: 15px;
-    background-color: rgb(89, 139, 231);
+    background-color: rgb(46, 79, 141);
     padding: 10px 30px 10px 30px;
     font-size: 15px;
 }
 
+.top {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.863);
+    color: black;
+    width: 100%;
+    font-weight: bold;
+}
+
+.nameInAgenda {
+    color: black;
+    font-size: 20px;
+}
+
+
 .title {
+<<<<<<< HEAD
      font-size: 60px; 
      color: white;
   }
+=======
+    font-size: 60px; 
+    color:#fff; 
+    text-decoration: none;
+}
+  
+>>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
