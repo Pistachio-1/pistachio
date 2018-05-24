@@ -1,18 +1,14 @@
-body {
+.home {
     text-align: center;
     color:#fff;
     padding-top:10em;
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
+    background-color: #9FD5ED;
   }
   
   * { color:#fff; text-decoration: none;}
 
-<<<<<<< HEAD
-.bbackground {
-    width: 800px;
-  }
-=======
  .agenda {
     font-family: Arial, Helvetica, sans-serif;
     font-style: bold;
@@ -20,8 +16,14 @@ body {
     color: black;
  } 
 
->>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
 
+transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
 
 form {
       margin: 10px auto;
@@ -51,7 +53,6 @@ button {
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.863);
     color: black;
-    width: 100%;
     font-weight: bold;
 }
 
@@ -62,14 +63,33 @@ button {
 
 
 .title {
-<<<<<<< HEAD
-     font-size: 60px; 
-     color: white;
-  }
-=======
     font-size: 60px; 
     color:#fff; 
     text-decoration: none;
 }
+
+.weatherPhoto {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+}
   
->>>>>>> a85c6520d0210941a5d0f8ded38d956ec0c6e7e7
+.dayOne {
+    background-color: white;
+    color: black;
+    padding-top: 10px;
+}
+
+p {
+    color: black;
+}
+
+.date {
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.weather {
+    margin-top: 15px;
+}
