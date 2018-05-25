@@ -3,10 +3,9 @@ var config = {
     authDomain: "pistachio-4a3df.firebaseapp.com",
     databaseURL: "https://pistachio-4a3df.firebaseio.com",
     projectId: "pistachio-4a3df",
-    storageBucket: "",
-    messagingSenderId: "1062361334522"
-  };
-firebase.initializeApp(config);
+}
+ firebase.initializeApp(config);
+
 var database = firebase.database();
 
 var name = [];
@@ -39,8 +38,18 @@ database.ref().on("child_added", function(snapshot) {
 });
 
 function addInput(){
+  //adding into agenda.html//
     name = $("#name").val().trim();
     location = $('#city').val().trim();
     deaprting = $('#departing').val().trim();
     returning = $('#returning').val().trim();
+
+    $("").append(name)
+    $("").append(location)
+    $("").append(departing)
+    $("").append(returning)
+}
+
+function addItinerary() {
+    
 }
