@@ -44,3 +44,10 @@ var lat = 33.658895099999995;
  
 resp = getForecastByLatLon(lat, lon);
 resp = getForecastByCity('Milan');
+
+
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+

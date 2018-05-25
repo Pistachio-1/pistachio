@@ -3,10 +3,9 @@ var config = {
     authDomain: "pistachio-4a3df.firebaseapp.com",
     databaseURL: "https://pistachio-4a3df.firebaseio.com",
     projectId: "pistachio-4a3df",
-    storageBucket: "pistachio-4a3df.appspot.com",
-    messagingSenderId: "1062361334522"
-  };
-  firebase.initializeApp(config);
+}
+ firebase.initializeApp(config);
+
 var database = firebase.database();
 
 var name = [];
@@ -39,7 +38,7 @@ database.ref().on("child_added", function(snapshot) {
 });
 
 function addInput(){
-    //adding into agenda.html//
+  //adding into agenda.html//
     name = $("#name").val().trim();
     location = $('#city').val().trim();
     deaprting = $('#departing').val().trim();
