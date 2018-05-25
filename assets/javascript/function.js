@@ -6,51 +6,64 @@ var config = {
     storageBucket: "pistachio-4a3df.appspot.com",
     messagingSenderId: "1062361334522"
   };
-  firebase.initializeApp(config);
+    firebase.initializeApp(config);
+
 var database = firebase.database();
 
-var name = [];
-var location = [];
-var departing = [];
-var returning = [];
-var firebasekey = [];
-
-$(".btn").on("click",function(event){
+//grabbing input and then uploading to firebase
+$("#submitInfo-btn").on("click",function(event){
     event.preventDefault();
-    var key = database.ref().push({
+    var name = $("#name-input").val().trim();
+    var location = $("#Location-input").val().trim();
+    var departing = $("#departing-input").val().trim();
+    var returning = $("#returning-input").val().trim();
+
+    var key = {
         name: name,
         location: location,
         departing: departing,
         returning: returning,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
-    })
+    };
 
-    firebasekey.push(key);
-    localStorage.clear();
-    localStorage.setItem(name, key)
+    database.ref().push(key);
+
+    console.log(key.name);
+    console.log(key.location);
+    console.log(key.departing);
+    console.log(key.returning);
+
+//clears the inputs - might not need it if changes the page
+    $("#name-input").val("")
+    $("#Location-input").val("")
+    $("#departing-input").val("")
+    $("#returning-input").val("")
 });
 
+//grabbing data from firebase and then appending to agenda html
 database.ref().on("child_added", function(snapshot) {
-    console.log(snapshot.val());
-    console.log(snapshot.val().name);
-    console.log(snapshot.val().location);
-    console.log(snapshot.val().departing);
-    console.log(snapshot.val().returning);
+    console.log(childSnapshot.val());
+
+    var name = childSnapshot.val().name;
+    var location = childSnapshot.val().location;
+    var departing = childSnapshot.val().departing;
+    var returning = childSnapshot.val().returning;
+
+    $("#name").append(name + "'s")
+    $("#city").append(location + "agenda")
+    $("#departing").append(departing)
+    $("#returning").append(returning)
+
 });
 
-function addInput(){
+
+// function addInput(){
     //adding into agenda.html//
-    name = $("#name").val().trim();
-    location = $('#city').val().trim();
-    deaprting = $('#departing').val().trim();
-    returning = $('#returning').val().trim();
 
-    $("").append(name)
-    $("").append(location)
-    $("").append(departing)
-    $("").append(returning)
-}
+    // $("").append(name)
+    // $("").append(location)
+    // $("").append(departing)
+    // $("").append(returning)
+// };
 
-function addItinerary() {
-    
-}
+// function addItinerary() {}

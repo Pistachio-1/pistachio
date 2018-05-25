@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+<body class="home">
+        <body background="assets/images/travel-hacks-opener-TRAVELHACK0717.jpg"></body> 
+        
+        <p class="title">
+            <a href="#" class="header animated bounceInRight">"Start planning your trip"</a>
+                <span class="wrap"></span>
+            </a>
+        </p>
+        <div class="container">
+            <div class=row>
+                <div class=col-md-4></div>
+                <div class=col-md-4>
+                    <div id='transbox'>    
+                        <div id="input">    
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputName">Name</label>
+                                    <input type="name" class="form-control" id="name-input" aria-describedby="Name" placeholder="Enter Name">
+                                    <small id="NamelHelp" class="form-text text-muted"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputLocation1">Location</label>
+                                    <input type="Location" class="form-control" id="Location-input" placeholder="Location">
+                                </div>
+                                <div class="form-group">
+                                    <div action="/action_page.php">
+                                        Departing:
+                                        <input type="date" class="form-control" name="departing" id="departing-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div action="/action_page.php">
+                                        Returning
+                                        <input type="date" class="form-control" name="returning" id="returning-input">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submitInfo-btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>    
+            </div>        
+        </div>
+        <style> 
+            .header{
+                -webkit-animation-duration: 3s;
+                -webkit-animation-delay: 2s;
+                -webkit-animation-iteration-count: infinite;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> -->
+        <!-- <script src="assets/javascript/app.js"></script> -->
+        <script src="assets/javascript/function.js"></script>
+</body>
+</html>
