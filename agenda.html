@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Agenda</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -36,14 +36,59 @@
             <div class="col-md-3">            
             <p class="weather">66 degrees <span id="weather">
             </span></p></div>
-        <div class="row">
-            <p class="currentAgenda">Today's Agenda:
-                //instert 
-            </p>
+        </div>  
+        <div class="row dayOne">
+            <p class="currentAgenda">Today's Agenda:</p>
+            <ul><li> <span id=dayOneList></span></li></ul>
+        </div>    
+        <div class="row dayOne">
+                <form> 
+                    <input type="text" id="dayOneInput"> 
+        </div> 
+        <div class="row dayOne">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-sm btn-info dayOneButton">Add to Agenda</button>
+            </form> 
+            </div>               
+        </div>   
+
+        <div class="row break"></div>
+        <div class="row dayTwo"> 
+             <div class="col-md-4">
+                <p class="date">July 2<span="secondDay"></span></p>
+             </div> 
+             <div class="col-md-4"></div>
+             <div class="col-md-1">
+                    <img class= "weatherPhoto" src=assets/images/weatherIcons/sun.png></img> 
+            </div>  
+            <div class="col-md-3">            
+                    <p class="weather">70 degrees <span id="weather">
+            </span></p>
+        </div>
+        </div>
+        <div class="row dayTwo">
+                <p class="currentAgenda">Today's Agenda:</p>
             </div>    
+            <div class="row dayOne">
+                    <form class="dayTwo"> 
+                        <input type="text"><br>
+                        <input type="text">
+                    </form>    
+            </div> 
+            <div class="row dayOne">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary btn-sm btn-info">Add to Agenda</button>
+                    </div>               
+                </div>   
 
         
-    </div>
+        
+        </div>     
+    </div>   
+
+        
             
             
     </body>
