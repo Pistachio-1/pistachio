@@ -118,6 +118,15 @@ p {
     padding-left: 20px;
 }
 
+li {
+    color:black;
+}
+
+.toDoButton {
+    color: lightblue;
+    background-color: white;
+    border-radius: 100px;
+}
 /* css for textbox */
 
 input[type=text] {

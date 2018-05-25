@@ -62,15 +62,29 @@ function adjust_textarea(h) {
     h.style.height = (h.scrollHeight)+"px";
 }
 
+
+//to do adding/subtracting
+
 dayOneToDo = [];
+counter = 0;
 
 $(".dayOneButton").click(function() {
-    var dayOneTask = $("input:text").val();
-    dayOneToDo.push("dayOneTask");
+    event.preventDefault();
+    var dayOneTask = $("input:text").val().trim();
     console.log(dayOneToDo);
+    $("input:text").val("");
+    counter++;
 
-    $("#dayOneList").html("test");
-
+    $("#dayOneList").append("<br><button class='toDoButton'>✓</button>" + " " + dayOneTask);
+    $(".toDoButton").click(function() {
+        $(this).parent().remove();
+    });
 });
+
+
+
+
+
+
 
 
