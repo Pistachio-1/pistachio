@@ -62,4 +62,15 @@ function adjust_textarea(h) {
     h.style.height = (h.scrollHeight)+"px";
 }
 
+dayOneToDo = [];
+
+$(".dayOneButton").click(function() {
+    var dayOneTask = $("input:text").val();
+    dayOneToDo.push("dayOneTask");
+    console.log(dayOneToDo);
+
+    $("#dayOneList").html("test");
+
+});
+
 
