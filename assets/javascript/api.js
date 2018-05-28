@@ -80,6 +80,9 @@ function getCityGeolocation(city, st) {
     return $.get(qstring);
 }
 
+/*
+ * get the nearest airport to a given lat/lon.
+*/
 var AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
 var AEROURL = 'https://airport.api.aero/airport/nearest/';
 
@@ -95,6 +98,7 @@ function getNearestAirport(lat,lon) {
         });
 }
 
+// the aero json isn't json. It needs to be cleaned up
 function cleanAeroResponse(resp) {
     console.log(resp);
     var respString = JSON.parse(JSON.stringify(resp.trim()));
@@ -104,6 +108,19 @@ function cleanAeroResponse(resp) {
     jsonResp = JSON.parse(respString);
     console.log(jsonResp);
     return jsonResp;
+}
+
+/*
+ * Get airport info from the FAA
+ * for airport status: https://services.faa.gov/airport/status/sfo?format=application/json
+ */
+var FAAURL = 'https://services.faa.gov/airport/status/';
+var FAAFORMAT = '?format=application/json';
+
+// get current airport info from the FAA using iata code (i.e. LAX)
+function getAirportInfo(code) {
+    var qstring = FAAURL + code + FAAFORMAT;
+    return $.get(qstring);
 }
 
 // keep this
