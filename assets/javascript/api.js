@@ -47,17 +47,9 @@ var getForecastByCity = function(city) {
     return $.get(qstring);
 }
 
-// test stuff remove later
-// var lon = -117.8282121;
-// var lat = 33.658895099999995;
-
-// var resp1 = getForecastByLatLon(lat, lon).done(function(resp) {return resp;});
-// var resp2 = getForecastByCity('New York').done(function(resp) {return resp;});
-
-// setTimeout(function() {
-//     console.log(resp1.responseJSON);
-//     console.log(resp2.responseJSON);
-// },3000 );
+/* 
+ *   Geolocation functions
+ */
 
 var GOOGLEAPIKEY = 'AIzaSyA7fYWzc8eCBfNRbGVQ5V__CadS5B939_s';
 var GOOGLEURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
@@ -67,7 +59,11 @@ var GOOGLEAPIPARAMS = {
     address: ''
 }
 
-// get the lat/lon for a city. City name is required. State/Province is optional but results will be better with it
+/* get the lat/lon for a city. City name is required. State/Province is optional but results will be better with it
+ *   The calls below will return different locations for Augusta Maine and Augusta Georgia
+ *   var resp1 = getCityGeolocation('Augusta', 'Maine').done(function(resp) {return resp;});
+ *   var resp2 = getCityGeolocation('Augusta').done(function(resp) {return resp;});
+ */
 function getCityGeolocation(city, st) {
     var qstring = GOOGLEAPIPARAMS;
 
@@ -76,23 +72,12 @@ function getCityGeolocation(city, st) {
     } else if (arguments.length === 1) {
         qstring.address = city;
     } else {
-        console.log('Invalid number of arguments');
-        return;
+        throw 'Invalid number of arguments';
     }
 
     var qstring = makeQueryString(GOOGLEURL, qstring);
     return $.get(qstring);
 }
-
-// test stuff remove eventually
-// var resp1 = getCityGeolocation('Augusta', 'Maine').done(function(resp) {return resp;});
-// var resp2 = getCityGeolocation('Augusta').done(function(resp) {return resp;});
-
-// setTimeout(function() {
-//     console.log(resp1.responseJSON);
-//     console.log(resp2.responseJSON);
-// },3000 );
-
 
 // keep this
 function adjust_textarea(h) {
