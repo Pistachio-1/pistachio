@@ -89,12 +89,10 @@ function getNearestAirport(lat,lon) {
     }
     // aero accept lat/lon in url, not in query parameters
     var qstring = AEROURL + lat + '/' + lon + '?user_key=' + AEROAPIKEY;
-    return $.get(qstring).done(function(resp) {
-        // console.log(resp)
-        var cleanResp = cleanAeroResponse(resp);
-        console.log(cleanResp);
-        return cleanResp;
-    });
+    return $.get(qstring)
+        .done(function(resp) {
+            // done is empty. another done block will be chained by the caller
+        });
 }
 
 function cleanAeroResponse(resp) {
