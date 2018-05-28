@@ -59,6 +59,39 @@ var getForecastByCity = function(city) {
 //     console.log(resp2.responseJSON);
 // },3000 );
 
+var GOOGLEAPIKEY = 'AIzaSyA7fYWzc8eCBfNRbGVQ5V__CadS5B939_s';
+var GOOGLEURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
+
+var GOOGLEAPIPARAMS = {
+    key: GOOGLEAPIKEY,
+    address: ''
+}
+
+// get the lat/lon for a city. City name is required. State/Province is optional but results will be better with it
+function getCityGeolocation(city, st) {
+    var qstring = GOOGLEAPIPARAMS;
+
+    if (arguments.length === 2) {
+        qstring.address = city + '+' + st;
+    } else if (arguments.length === 1) {
+        qstring.address = city;
+    } else {
+        console.log('Invalid number of arguments');
+        return;
+    }
+
+    var qstring = makeQueryString(GOOGLEURL, qstring);
+    return $.get(qstring);
+}
+
+// test stuff remove eventually
+// var resp1 = getCityGeolocation('Augusta', 'Maine').done(function(resp) {return resp;});
+// var resp2 = getCityGeolocation('Augusta').done(function(resp) {return resp;});
+
+// setTimeout(function() {
+//     console.log(resp1.responseJSON);
+//     console.log(resp2.responseJSON);
+// },3000 );
 
 
 // keep this
