@@ -76,7 +76,36 @@ function getCityGeolocation(city, st) {
     }
 
     var qstring = makeQueryString(GOOGLEURL, qstring);
+    console.log(qstring);
     return $.get(qstring);
+}
+
+var AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
+var AEROURL = 'https://airport.api.aero/airport/nearest/';
+
+function getNearestAirport(lat,lon) {
+    if (arguments.length != 2) {
+        throw 'Invalid number of arguments';
+    }
+    // aero accept lat/lon in url, not in query parameters
+    var qstring = AEROURL + lat + '/' + lon + '?user_key=' + AEROAPIKEY;
+    return $.get(qstring).done(function(resp) {
+        // console.log(resp)
+        var cleanResp = cleanAeroResponse(resp);
+        console.log(cleanResp);
+        return cleanResp;
+    });
+}
+
+function cleanAeroResponse(resp) {
+    console.log(resp);
+    var respString = JSON.parse(JSON.stringify(resp.trim()));
+    respString = respString.substr(9);
+    respString = respString.substr(0, respString.length-1);
+    console.log(respString);
+    jsonResp = JSON.parse(respString);
+    console.log(jsonResp);
+    return jsonResp;
 }
 
 // keep this
