@@ -6,8 +6,8 @@
     var lon = -117.8282121;
     var lat = 33.658895099999995;
 
-    var resp1 = getForecastByLatLon(lat, lon).done(function(resp) {return resp;});
-    var resp2 = getForecastByCity('New York').done(function(resp) {return resp;});
+    var resp1 = getForecastByLatLon(lat, lon);
+    var resp2 = getForecastByCity('New York');
 
     // now wait 3 seconds for the async calls to complete
     setTimeout(function() {
@@ -99,44 +99,81 @@ function CityLocation(city, st) {
 /*
  * get the nearest airport to a given lat/lon.
 */
-var AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
-var AEROURL = 'https://airport.api.aero/airport/nearest/';
 
-function getNearestAirport(lat, lon) {
+function GetNearestAirport(lat, lon) {
+    this.AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
+    this.AEROURL = 'https://airport.api.aero/airport/nearest/';
+    this.nearestAirport = {};
+
+    // the aero json isn't json. It needs to be cleaned up
+    this.cleanAeroResponse = function (resp, nearestAirport) {
+        console.log(resp);
+        var respString = JSON.parse(JSON.stringify(resp.trim()));
+        respString = respString.substr(9);
+        respString = respString.substr(0, respString.length - 1);
+        console.log(respString);
+        nearestAirport = JSON.parse(respString);
+        console.log(nearestAirport);
+    };
+
+    this.getNearestAirport = function (lat, lon, nearestairport) {
+        // aero accept lat/lon in url, not in query parameters
+        var qstring = this.AEROURL + lat + '/' + lon + '?user_key=' + this.AEROAPIKEY;
+        return $.get(qstring)
+            .done(function (resp) {
+                console.log(nearestairport);
+                var respString = JSON.parse(JSON.stringify(resp.trim()));
+                console.log(respString);
+                respString = respString.substr(9);
+                respString = respString.substr(0, respString.length - 1);
+                console.log(respString);
+                var parsedJSON = JSON.parse(respString);
+                var airport = parsedJSON.airports[0];
+                console.log(airport);
+                nearestairport = airport;
+
+            })
+            .fail(function (resp) {
+                console.log('Nearest Airport lookup failed');
+            });
+    };
+
     if (arguments.length != 2) {
         throw 'Invalid number of arguments';
     }
-    // aero accept lat/lon in url, not in query parameters
-    var qstring = AEROURL + lat + '/' + lon + '?user_key=' + AEROAPIKEY;
-    return $.get(qstring)
-        .done(function (resp) {
-            // done is empty. another done block will be chained by the caller
-        });
-}
-
-// the aero json isn't json. It needs to be cleaned up
-function cleanAeroResponse(resp) {
-    console.log(resp);
-    var respString = JSON.parse(JSON.stringify(resp.trim()));
-    respString = respString.substr(9);
-    respString = respString.substr(0, respString.length - 1);
-    console.log(respString);
-    jsonResp = JSON.parse(respString);
-    console.log(jsonResp);
-    return jsonResp;
+    this.getNearestAirport(lat, lon, this.nearestAirport);
 }
 
 /*
  * Get airport info from the FAA
  * for airport status: https://services.faa.gov/airport/status/sfo?format=application/json
  */
-var FAAURL = 'https://services.faa.gov/airport/status/';
-var FAAFORMAT = '?format=application/json';
 
-// get current airport info from the FAA using iata code (i.e. LAX)
-function getAirportInfo(code) {
-    var qstring = FAAURL + code + FAAFORMAT;
-    return $.get(qstring);
+function AirportInfo(code) {
+    this.FAAURL = 'https://services.faa.gov/airport/status/';
+    this.FAAFORMAT = '?format=application/json';
+    this.airportInfo = {};
+
+    // get current airport info from the FAA using iata code (i.e. LAX)
+    this.getAirportInfo = function(code, returnedJSON) {
+        var qstring = this.FAAURL + code + this.FAAFORMAT;
+        return $.get(qstring)
+            .done(function(resp) {
+                returnedJSON.IATA   = resp.IATA;
+                returnedJSON.IACO   = resp.IACO;
+                returnedJSON.city   = resp.city;
+                returnedJSON.delay  = resp.delay;
+                returnedJSON.state  = resp.state;
+                returnedJSON.name   = resp.name;
+                returnedJSON.status = resp.status;
+                returnedJSON.weather = resp.weather;
+            })
+            .fail(function (resp) {
+                console.log("GetAirportInfo failed.")
+            });
+    };
+
+    this.getAirportInfo(code, this.airportInfo);
 }
 
 
