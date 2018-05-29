@@ -16,68 +16,84 @@
     },3000 );
 */
 
-var WUAPIKEY = 'e04dc2a2ae502b3bb7f9ee699ba2a841';
-var WUURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
+function WeatherForecast() {
+    this.OWAPIKEY = 'e04dc2a2ae502b3bb7f9ee699ba2a841';
+    this.OWURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
 
-var WUFORECASTPARMS = {
-    appid: WUAPIKEY,
-    cnt: 5
-}
+    this.OWFORECASTPARMS = {
+        appid: this.OWAPIKEY,
+        cnt: 5
+    };
 
-function makeQueryString(url, params) {
-    return url + $.param(params);
-}
+    this.makeQueryString = function (params) {
+        return this.OWURL + $.param(params);
+    };
 
+    this.getForecastByLatLon = function (lat, lon) {
+        var qparams = this.OWFORECASTPARMS;
+        qparams.lat = lat;
+        qparams.lon = lon;
+        var qstring = this.makeQueryString(qparams);
 
-function getForecastByLatLon(lat, lon, func) {
-    var qparams = WUFORECASTPARMS;
-    qparams.lat = lat;
-    qparams.lon = lon;
-    var qstring = makeQueryString(WUURL, qparams);
+        return $.get(qstring);
+    };
 
-   return $.get(qstring);
-}
+    this.getForecastByCity = function (city) {
+        var qparams = this.OWFORECASTPARMS;
+        qparams.q = city;
+        var qstring = this.makeQueryString(qparams);
 
-var getForecastByCity = function(city) {
-    var qparams = WUFORECASTPARMS;
-    qparams.q = city;
-    var qstring = makeQueryString(WUURL, qparams);
-    var resp ='';
-
-    return $.get(qstring);
+        return $.get(qstring);
+    }
 }
 
 /* 
- *   Geolocation functions
- */
-
-var GOOGLEAPIKEY = 'AIzaSyA7fYWzc8eCBfNRbGVQ5V__CadS5B939_s';
-var GOOGLEURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
-
-var GOOGLEAPIPARAMS = {
-    key: GOOGLEAPIKEY,
-    address: ''
-}
-
-/* get the lat/lon for a city. City name is required. State/Province is optional but results will be better with it
+ * get the lat/lon for a city. City name is required. State/Province is optional but results will be better with it
  *   The calls below will return different locations for Augusta Maine and Augusta Georgia
- *   var resp1 = getCityGeolocation('Augusta', 'Maine').done(function(resp) {return resp;});
- *   var resp2 = getCityGeolocation('Augusta').done(function(resp) {return resp;});
+ *   var resp1 = getCityGeolocation('Augusta', 'Maine');
+ *   var resp2 = getCityGeolocation('Augusta'));
  */
-function getCityGeolocation(city, st) {
-    var qstring = GOOGLEAPIPARAMS;
+function CityLocation(city, st) {
+    var GOOGLEAPIKEY = 'AIzaSyA7fYWzc8eCBfNRbGVQ5V__CadS5B939_s';
+    var GOOGLEURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
+
+    var GOOGLEAPIPARAMS = {
+        key: GOOGLEAPIKEY,
+        address: ''
+    }
+
+    this.qstring = GOOGLEAPIPARAMS;
+    this.cityLocation = {};
+
+    this.makeQueryString = function (url, params) {
+        return url + $.param(params);
+    };
+
+    this.getCityLocation = function (url, params, citylocation) {
+        var qstring = this.makeQueryString(url, params);
+
+        return $.get(qstring)
+            .done(function (resp) {
+                var components = resp.results[0].address_components[0];
+                var location = resp.results[0].geometry.location;
+                citylocation.city = components.short_name;
+                citylocation.address = resp.results[0].formatted_address;
+                citylocation.lat = location.lat;
+                citylocation.lon = location.lng;
+            }).fail(function (resp) {
+                console.log('CityLocation lookup failed');
+            });
+    };
 
     if (arguments.length === 2) {
-        qstring.address = city + '+' + st;
+        this.qstring.address = city + '+' + st;
     } else if (arguments.length === 1) {
-        qstring.address = city;
+        this.qstring.address = city;
     } else {
         throw 'Invalid number of arguments';
     }
 
-    var qstring = makeQueryString(GOOGLEURL, qstring);
-    console.log(qstring);
-    return $.get(qstring);
+    this.getCityLocation(GOOGLEURL, this.qstring, this.cityLocation);
 }
 
 /*
@@ -86,14 +102,14 @@ function getCityGeolocation(city, st) {
 var AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
 var AEROURL = 'https://airport.api.aero/airport/nearest/';
 
-function getNearestAirport(lat,lon) {
+function getNearestAirport(lat, lon) {
     if (arguments.length != 2) {
         throw 'Invalid number of arguments';
     }
     // aero accept lat/lon in url, not in query parameters
     var qstring = AEROURL + lat + '/' + lon + '?user_key=' + AEROAPIKEY;
     return $.get(qstring)
-        .done(function(resp) {
+        .done(function (resp) {
             // done is empty. another done block will be chained by the caller
         });
 }
@@ -103,7 +119,7 @@ function cleanAeroResponse(resp) {
     console.log(resp);
     var respString = JSON.parse(JSON.stringify(resp.trim()));
     respString = respString.substr(9);
-    respString = respString.substr(0, respString.length-1);
+    respString = respString.substr(0, respString.length - 1);
     console.log(respString);
     jsonResp = JSON.parse(respString);
     console.log(jsonResp);
@@ -123,9 +139,10 @@ function getAirportInfo(code) {
     return $.get(qstring);
 }
 
+
 // keep this
 function adjust_textarea(h) {
     h.style.height = "20px";
-    h.style.height = (h.scrollHeight)+"px";
+    h.style.height = (h.scrollHeight) + "px";
 }
 

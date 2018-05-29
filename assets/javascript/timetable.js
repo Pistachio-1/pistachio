@@ -34,7 +34,7 @@ function TimeTable(code, direction) {
                     }
                 }
             }).fail(function(resp) {
-                console.log('we failed');
+                console.log('TimeTable lookup failed');
             });
     };
 
