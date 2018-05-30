@@ -129,6 +129,12 @@ li {
     background-color: white;
     border-radius: 100px;
 }
+
+.dropButton {
+    background-color: #ffffff;
+    border: 1px solid black;
+    color: black;
+}
 /* css for textbox */
 
 input[type=text] {
