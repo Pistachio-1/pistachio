@@ -3,53 +3,65 @@ var config = {
     authDomain: "pistachio-4a3df.firebaseapp.com",
     databaseURL: "https://pistachio-4a3df.firebaseio.com",
     projectId: "pistachio-4a3df",
-}
+    storageBucket: "pistachio-4a3df.appspot.com",
+    messagingSenderId: "1062361334522"
+  };
  firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var name = [];
-var location = [];
-var departing = [];
-var returning = [];
-var firebasekey = [];
-
-$(".btn").on("click",function(event){
+//pulling input information and pushing it to firebase
+$(".submit").on("click",function(event){
     event.preventDefault();
-    var key = database.ref().push({
+
+    var name = $("#name-input").val().trim();
+    var location = $("#location-input").val().trim();
+    var departing = $("#departing-input").val();
+    var returning = $("#returning-input").val();
+
+    var key = {
         name: name,
         location: location,
         departing: departing,
         returning: returning,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    })
+    };
 
-    firebasekey.push(key);
-    localStorage.clear();
-    localStorage.setItem(name, key)
+    database.ref().push(key);
+
+    location.href="agenda.html"
+
 });
 
-database.ref().on("child_added", function(snapshot) {
-    console.log(snapshot.val());
-    console.log(snapshot.val().name);
-    console.log(snapshot.val().location);
-    console.log(snapshot.val().departing);
-    console.log(snapshot.val().returning);
+
+
+//referring to firebase to get information and appending it
+database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+ 
+    var name = childSnapshot.val().name;
+    var location = childSnapshot.val().location;
+    var departing = childSnapshot.val().departing;
+    var returning = childSnapshot.val().returning;
+  
+    $("#name-display").append(name.toUpperCase() + "'s");
+    $("#city-display").append(location.toUpperCase());
+    $("#departing-display").append(departing.toString("MMM DD YYYY"));
+    $("#returning-display").append(returning.toString("MMM DD YYYY"))
 });
 
-function addInput(){
-  //adding into agenda.html//
-    name = $("#name").val().trim();
-    location = $('#city').val().trim();
-    deaprting = $('#departing').val().trim();
-    returning = $('#returning').val().trim();
+// function addInput(){
+//   //adding into agenda.html//
+//     name = $("#name").val().trim();
+//     location = $('#city').val().trim();
+//     deaprting = $('#departing').val().trim();
+//     returning = $('#returning').val().trim();
 
-    $("").append(name)
-    $("").append(location)
-    $("").append(departing)
-    $("").append(returning)
-}
+//     $("").append(name)
+//     $("").append(location)
+//     $("").append(departing)
+//     $("").append(returning)
+// }
 
-function addItinerary() {
+// function addItinerary() {
     
-}
+// }
