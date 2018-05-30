@@ -49,5 +49,4 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
     $("#returning-display").append(returning.toString("MMM DD YYYY"))
 });
 
-// function addItinerary(){
 
