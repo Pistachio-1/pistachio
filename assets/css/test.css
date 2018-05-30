@@ -1,0 +1,9 @@
+.recommended {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 70%;
+    height: 20px;
+    padding-bottom: 40%;
+    background: #4c4c4c4c;
+    border: solid #2c2c2c2c 10px;
+}
