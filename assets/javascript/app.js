@@ -66,16 +66,14 @@ function adjust_textarea(h) {
 //to do adding/subtracting
 
 dayOneToDo = [];
-counter = 0;
+
 
 $(".dayOneButton").click(function() {
     event.preventDefault();
     var dayOneTask = $("input:text").val().trim();
     console.log(dayOneToDo);
     $("input:text").val("");
-    counter++;
-
-    $("#dayOneList").append("<br><button class='toDoButton'>✓</button>" + " " + dayOneTask);
+    $("#dayOneList").append("<span><br><button class='toDoButton'>✓</button>" + " " + dayOneTask + "</span");
     $(".toDoButton").click(function() {
         $(this).parent().remove();
     });
