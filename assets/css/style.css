@@ -112,7 +112,9 @@ p {
 
 .weather {
     margin-top: 15px;
+
 }
+
 
 .currentAgenda {
     padding-left: 20px;
@@ -151,3 +153,4 @@ input:focus {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 }
+
