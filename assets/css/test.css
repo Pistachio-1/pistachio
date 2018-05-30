@@ -1,9 +1,29 @@
-.recommended {
+.recommended{
+    color: white;
+  }
+.slide-container {
+    overflow: auto;
+    white-space: nowrap;
     margin: 0 auto;
     margin-top: 20px;
-    width: 70%;
-    height: 20px;
-    padding-bottom: 40%;
-    background: #4c4c4c4c;
-    border: solid #2c2c2c2c 10px;
+    width: 80%;
+    opacity: 20%;
+    border: solid #2c2c2c2c 5px;
+  }
+
+img {
+    width: 300px;
+    height: 250px;
+    padding: 5px;
+}
+
+.images {
+    display: inline!important;
+}
+
+.slide {
+    width: 335px;
+    height: 300px;
+    margin: 0px;
+
 }

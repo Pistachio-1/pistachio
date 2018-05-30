@@ -23,68 +23,109 @@
     </p>
 
     <div class="recommended">
-        <div class="mainframe">
-            <div class="card-deck" id="one">
-                <div class="card">
-                    <img class="card-img-top" src="assets/images/cities/losangeles.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Los Angeles</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="assets/images/cities/nyc.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">New York City</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                        <img class="card-img-top" src="assets/images/cities/chitown.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Chicago</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-            </div>
+        <h2>Recommended</h2>
+        <div class="slide-container">
+            <div class="images">
+                <img src="assets/images/cities/boston.jpg">
+                <img src="assets/images/cities/chitown.jpg">
+                <img src="assets/images/cities/dc.jpg">
+                <img src="assets/images/cities/honolulu.jpg">
+                <img src="assets/images/cities/lasvegas.jpg">
+                <img src="assets/images/cities/losangeles.jpg">
+                <img src="assets/images/cities/miami.jpg">
+                <img src="assets/images/cities/nyc.jpg">
+                <img src="assets/images/cities/seattle.jpg">
+                <img src="assets/images/cities/sf.jpg">
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/function.js"></script>
+    <!-- <script>
+        onload  = start;
+        function start(){	
+        var i = 1;
+        function Move(){ 	
+            i = (i%4)+1; // 4 is the Number of image in slider
+            document.getElementById('i'+i).checked = true;
+        }
+        setInterval(Move,3000); //change img in 3 sec
+        }
+    </script> -->
 </body>
 </html>
-
-<!-- <div class="card-deck">
-        <div class="card">
-            <img class="card-img-top" src=".../100px200/" alt="Card image cap">
+<!-- 
+<div class="card">
+        <img class="card-img-top" src="assets/images/cities/losangeles.jpg" alt="Los Angeles">
+        <div class="card-body">
+            <h5 class="card-title">Los Angeles</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="assets/images/cities/nyc.jpg" alt="New York City">
+        <div class="card-body">
+            <h5 class="card-title">New York City</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+            <img class="card-img-top" src="assets/images/cities/chitown.jpg" alt="Chicago">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Chicago</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-</div> -->
+    <div class="card">
+        <img class="card-img-top" src="assets/images/cities/miami.jpg" alt="Miami">
+        <div class="card-body">
+            <h5 class="card-title">Miami</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="assets/images/cities/seattle.jpg" alt="Seattle">
+        <div class="card-body">
+            <h5 class="card-title">Seattle</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+            <img class="card-img-top" src="assets/images/cities/sf.jpg" alt="San Fran">
+            <div class="card-body">
+                <h5 class="card-title">San Francisco</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="assets/images/cities/boston.jpg" alt="Boston">
+        <div class="card-body">
+            <h5 class="card-title">Boston</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="assets/images/cities/honolulu.jpg" alt="Honolulu">
+        <div class="card-body">
+            <h5 class="card-title">Honolulu</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+            <img class="card-img-top" src="assets/images/cities/dc.jpg" alt="Washington DC">
+            <div class="card-body">
+                <h5 class="card-title">Washington DC</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+    </div> -->
