@@ -12,7 +12,7 @@ function TimeTable(code, direction) {
 
     this.maxEntries = 10;
     this.entries;
-    this.selections = [];
+    this.responseJSON = [];
 
     this.makeAEQueryString = function (code, type) {
         this.queryParams.iataCode = this.code;
@@ -20,7 +20,7 @@ function TimeTable(code, direction) {
         return this.AEURL + $.param(this.queryParams);
     };
 
-    this.getTimeTable = function (code, type, limit, selections) {
+    this.getTimeTable = function (code, type, limit, responseJSON) {
         var qstring = this.makeAEQueryString(code, type);
 
         return $.get(qstring)
@@ -29,7 +29,7 @@ function TimeTable(code, direction) {
 
                 for (var i = 0; i < limit;) {
                     if (jsonTimeTable[i].status === 'scheduled') {
-                        selections.push(jsonTimeTable[i]);
+                        responseJSON.push(jsonTimeTable[i]);
                         ++i;
                     }
                 }
@@ -38,5 +38,5 @@ function TimeTable(code, direction) {
             });
     };
 
-    this.getTimeTable(code, direction, this.maxEntries, this.selections);
+    this.getTimeTable(code, direction, this.maxEntries, this.responseJSON);
 }

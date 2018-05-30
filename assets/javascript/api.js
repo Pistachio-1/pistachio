@@ -63,7 +63,7 @@ function CityLocation(city, st) {
     }
 
     this.qstring = GOOGLEAPIPARAMS;
-    this.jsonResp = {};
+    this.responseJSON = {};
 
     this.makeQueryString = function (url, params) {
         return url + $.param(params);
@@ -93,7 +93,7 @@ function CityLocation(city, st) {
         throw 'Invalid number of arguments';
     }
 
-    this.getCityLocation(GOOGLEURL, this.qstring, this.jsonResp);
+    this.getCityLocation(GOOGLEURL, this.qstring, this.responseJSON);
 }
 
 /*
@@ -103,7 +103,7 @@ function CityLocation(city, st) {
 function GetNearestAirport(lat, lon) {
     this.AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
     this.AEROURL = 'https://airport.api.aero/airport/nearest/';
-    this.jsonResp = {};
+    this.responseJSON = {};
 
     this.getNearestAirport = function (lat, lon, nearestairport) {
         // aero accept lat/lon in url, not in query parameters
@@ -140,7 +140,7 @@ function GetNearestAirport(lat, lon) {
     if (arguments.length != 2) {
         throw 'Invalid number of arguments';
     }
-    this.getNearestAirport(lat, lon, this.jsonResp);
+    this.getNearestAirport(lat, lon, this.responseJSON);
 }
 
 /*
@@ -153,7 +153,7 @@ function GetNearestAirport(lat, lon) {
 function AirportInfo(code) {
     this.FAAURL = 'https://services.faa.gov/airport/status/';
     this.FAAFORMAT = '?format=application/json';
-    this.jsonResp = {};
+    this.respJSON = {};
 
     // get current airport info from the FAA using iata code (i.e. LAX)
     this.getAirportInfo = function(code, returnedJSON) {
@@ -174,7 +174,7 @@ function AirportInfo(code) {
             });
     };
 
-    this.getAirportInfo(code, this.jsonResp);
+    this.getAirportInfo(code, this.respJSON);
 }
 
 
