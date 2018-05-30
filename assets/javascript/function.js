@@ -49,19 +49,5 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
     $("#returning-display").append(returning.toString("MMM DD YYYY"))
 });
 
-// function addInput(){
-//   //adding into agenda.html//
-//     name = $("#name").val().trim();
-//     location = $('#city').val().trim();
-//     deaprting = $('#departing').val().trim();
-//     returning = $('#returning').val().trim();
+// function addItinerary(){
 
-//     $("").append(name)
-//     $("").append(location)
-//     $("").append(departing)
-//     $("").append(returning)
-// }
-
-// function addItinerary() {
-    
-// }
