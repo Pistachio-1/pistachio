@@ -63,7 +63,7 @@ function CityLocation(city, st) {
     }
 
     this.qstring = GOOGLEAPIPARAMS;
-    this.cityLocation = {};
+    this.jsonResp = {};
 
     this.makeQueryString = function (url, params) {
         return url + $.param(params);
@@ -93,7 +93,7 @@ function CityLocation(city, st) {
         throw 'Invalid number of arguments';
     }
 
-    this.getCityLocation(GOOGLEURL, this.qstring, this.cityLocation);
+    this.getCityLocation(GOOGLEURL, this.qstring, this.jsonResp);
 }
 
 /*
