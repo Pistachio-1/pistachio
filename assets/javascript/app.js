@@ -81,7 +81,7 @@ $(".dayOneButton").click(function() {
     });
 });
 
-(function() {
+(function($) {
     "use strict";
 
     // manual carousel controls
