@@ -103,18 +103,7 @@ function CityLocation(city, st) {
 function GetNearestAirport(lat, lon) {
     this.AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
     this.AEROURL = 'https://airport.api.aero/airport/nearest/';
-    this.nearestAirport = {};
-
-    // the aero json isn't json. It needs to be cleaned up
-    this.cleanAeroResponse = function (resp, nearestAirport) {
-        console.log(resp);
-        var respString = JSON.parse(JSON.stringify(resp.trim()));
-        respString = respString.substr(9);
-        respString = respString.substr(0, respString.length - 1);
-        console.log(respString);
-        nearestAirport = JSON.parse(respString);
-        console.log(nearestAirport);
-    };
+    this.jsonResp = {};
 
     this.getNearestAirport = function (lat, lon, nearestairport) {
         // aero accept lat/lon in url, not in query parameters
@@ -122,16 +111,26 @@ function GetNearestAirport(lat, lon) {
         return $.get(qstring)
             .done(function (resp) {
                 console.log(nearestairport);
+                // the returned json isn't is really javascript so the
+                // next few lines edit it so it can be parsed as json
                 var respString = JSON.parse(JSON.stringify(resp.trim()));
                 console.log(respString);
                 respString = respString.substr(9);
                 respString = respString.substr(0, respString.length - 1);
                 console.log(respString);
                 var parsedJSON = JSON.parse(respString);
+
+                // resp parsed, copy it to our response object
                 var airport = parsedJSON.airports[0];
                 console.log(airport);
-                nearestairport = airport;
-
+                nearestairport.city     = airport.city;
+                nearestairport.code     = airport.code;
+                nearestairport.country  = airport.country;
+                nearestairport.lat      = airport.lat;
+                nearestairport.lng      = airport.lng;
+                nearestairport.name     = airport.name;
+                nearestairport.timezone = airport.timezone
+                console.log(nearestairport);
             })
             .fail(function (resp) {
                 console.log('Nearest Airport lookup failed');
@@ -141,18 +140,20 @@ function GetNearestAirport(lat, lon) {
     if (arguments.length != 2) {
         throw 'Invalid number of arguments';
     }
-    this.getNearestAirport(lat, lon, this.nearestAirport);
+    this.getNearestAirport(lat, lon, this.jsonResp);
 }
 
 /*
  * Get airport info from the FAA
  * for airport status: https://services.faa.gov/airport/status/sfo?format=application/json
+ * Construct with var airportData = new AirportInfo('SFO');
+ * Then extract with airportData.airportInfo.
  */
 
 function AirportInfo(code) {
     this.FAAURL = 'https://services.faa.gov/airport/status/';
     this.FAAFORMAT = '?format=application/json';
-    this.airportInfo = {};
+    this.jsonResp = {};
 
     // get current airport info from the FAA using iata code (i.e. LAX)
     this.getAirportInfo = function(code, returnedJSON) {
@@ -173,7 +174,7 @@ function AirportInfo(code) {
             });
     };
 
-    this.getAirportInfo(code, this.airportInfo);
+    this.getAirportInfo(code, this.jsonResp);
 }
 
 
