@@ -61,6 +61,14 @@ img {
 }
 
 .card {
-    width: 350px;
+    width: 250px !important;
     height: 350px;
+    padding: 5px;
 }
+
+.carousel-slide {
+    width: 60%;
+    margin: auto;
+}
+
+
