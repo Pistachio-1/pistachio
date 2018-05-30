@@ -65,19 +65,59 @@ function adjust_textarea(h) {
 
 //to do adding/subtracting
 
-dayOneToDo = [];
-
 
 $(".dayOneButton").click(function() {
     event.preventDefault();
-    var dayOneTask = $("input:text").val().trim();
-    console.log(dayOneToDo);
-    $("input:text").val("");
+    var dayOneTask = $("#dayOneInput").val().trim();
+    $("#dayOneInput").val("");
     $("#dayOneList").append("<span><br><button class='toDoButton'>✓</button>" + " " + dayOneTask + "</span");
     $(".toDoButton").click(function() {
         $(this).parent().remove();
     });
 });
+
+$(".dayTwoButton").click(function() {
+    event.preventDefault();
+    var dayTwoTask = $("#dayTwoInput").val().trim();
+    $("#dayTwoInput").val("");
+    $("#dayTwoList").append("<span><br><button class='toDoButton'>✓</button>" + " " + dayTwoTask + "</span>");
+    $(".toDoButton").click(function() {
+        $(this).parent().remove();
+    });
+});
+
+$(".dayThreeButton").click(function() {
+    event.preventDefault();
+    var dayThreeTask = $("#dayThreeInput").val().trim();
+    $("#dayThreeInput").val("");
+    $("#dayThreeList").append("<span><br><button class='toDoButton'>✓</button>" + " " + dayThreeTask + "</span>");
+    $(".toDoButton").click(function() {
+        $(this).parent().remove();
+    });
+});
+
+$(".dayFourButton").click(function() {
+    event.preventDefault();
+    var dayFourTask = $("#dayFourInput").val().trim();
+    $("#dayFourInput").val("");
+    $("#dayFourList").append("<span><br><button class='toDoButton'>✓</button>" + " " + dayFourTask + "</span>");
+    $(".toDoButton").click(function() {
+        $(this).parent().remove();
+    });
+});
+
+$(".dayFiveButton").click(function() {
+    event.preventDefault();
+    var dayFiveTask = $("#dayFiveInput").val().trim();
+    $("#dayFiveInput").val("");
+    $("#dayFiveList").append("<span><br><button class='toDoButton'>✓</button>" + " " + dayFiveTask + "</span>");
+    $(".toDoButton").click(function() {
+        $(this).parent().remove();
+    });
+});
+
+
+
 
 
 

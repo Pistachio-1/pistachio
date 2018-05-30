@@ -43,10 +43,10 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
     var departing = childSnapshot.val().departing;
     var returning = childSnapshot.val().returning;
   
-    $("#name-display").append(name.toUpperCase() + "'s");
-    $("#city-display").append(location.toUpperCase());
+    $("#name-display").append(name + "'s");
+    $("#city-display").append(location);
     $("#departing-display").append(departing.toString("MMM DD YYYY"));
-    $("#returning-display").append(returning.toString("MMM DD YYYY"))
+    $("#returning-display").append(returning.toString("MMM DD YYYY"));
 });
 
 // function addItinerary(){
