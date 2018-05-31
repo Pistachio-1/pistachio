@@ -18,7 +18,7 @@
 
 function WeatherForecast() {
     this.OWAPIKEY = 'e04dc2a2ae502b3bb7f9ee699ba2a841';
-    this.OWURL = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
+    this.OWURL = 'https://api.openweathermap.org/data/2.5/forecast/daily?';
 
     this.OWFORECASTPARMS = {
         appid: this.OWAPIKEY,
