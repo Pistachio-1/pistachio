@@ -26,7 +26,7 @@ transbox {
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.6;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+    filter: alpha(opacity=60);
 }
 
 form {
@@ -148,7 +148,6 @@ li {
     border: 1px solid black;
     color: black;
 }
-/* css for textbox */
 
 input[type=text] {
     border-bottom: 2px dashed grey;
