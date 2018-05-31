@@ -10,6 +10,7 @@ var config = {
 
 var database = firebase.database();
 
+
 //pulling input information and pushing it to firebase
 $(".submit").on("click",function(event){
     event.preventDefault();
@@ -47,7 +48,36 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
     $("#city-display").append(location);
     $("#departing-display").append(departing.toString("MMM DD YYYY"));
     $("#returning-display").append(returning.toString("MMM DD YYYY"));
-});
 
-// function addItinerary(){
+    var airports = {
+        "New York City" :"JFK",
+        "Chicago" : "ORD",
+        "Las Vegas" : "LAS",
+        "Los Angeles" : "LAX",
+        "Miami" : "MIA",
+        "San Francisco" : "SFO",
+        "Seattle" : "SEA",
+    }
+    var x = airports[location]
+
+    airportInfo = new AirportInfo(x);
+    setTimeout(function () {
+        var resp = airportInfo.respJSON;
+        var delay = resp.name + ' ';
+        if (resp.delay) {
+            if (resp.status.avgDelay.length > 0) {
+                delay += 'average delay ' + resp.status.avgDelay
+                    + ' reason ' + resp.status.reason;
+            } else {
+                delay += 'min. delay ' + resp.status.minDelay
+                    + ' max. delay ' + resp.status.maxDelay
+                    + ' reason ' + resp.status.reason;
+            }
+        } else {
+            delay += 'no delays';
+        };
+        $("#airport").text(delay);
+    }, 1200);
+
+});
 

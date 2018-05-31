@@ -151,6 +151,7 @@ function GetNearestAirport(lat, lon) {
  * Then extract with airportData.airportInfo.
  */
 
+
 function AirportInfo(code) {
     this.FAAURL = 'https://services.faa.gov/airport/status/';
     this.FAAFORMAT = '?format=application/json';
