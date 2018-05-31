@@ -7,10 +7,14 @@
     background-color: #9FD5ED;
   }
   
-  * { color:#fff; text-decoration: none;}
+* { 
+    color:#fff; 
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
 
  .agenda {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-style: bold;
     background-color: #9FD5ED;
     color: black;
@@ -98,12 +102,14 @@ span {
 .days {
     background-color: white;
     color: black;
+    font-family: 'IBM Plex Sans', sans-serif;
 
 }
 .dayTwo {
     background-color: white;
     color: black;
     padding-top: 15px;
+    font-family: 'IBM Plex Sans', sans-serif;
 
 }
 
@@ -159,9 +165,14 @@ input:focus {
 }
 
 .delay {
-    background-color: lightsalmon;
+    background-color: rgb(157, 214, 224);
     padding-top: 5px;
     padding-bottom: 0px;
+}
+
+marquee {
+    font-family: 'Arimo', sans-serif;
+    margin: 0;
 }
 
 

@@ -22,7 +22,8 @@ function WeatherForecast() {
 
     this.OWFORECASTPARMS = {
         appid: this.OWAPIKEY,
-        cnt: 5
+        cnt: 5,
+        units: 'imperial'
     };
 
     this.makeQueryString = function (params) {
@@ -110,19 +111,15 @@ function GetNearestAirport(lat, lon) {
         var qstring = this.AEROURL + lat + '/' + lon + '?user_key=' + this.AEROAPIKEY;
         return $.get(qstring)
             .done(function (resp) {
-                console.log(nearestairport);
                 // the returned json isn't is really javascript so the
                 // next few lines edit it so it can be parsed as json
                 var respString = JSON.parse(JSON.stringify(resp.trim()));
-                console.log(respString);
                 respString = respString.substr(9);
                 respString = respString.substr(0, respString.length - 1);
-                console.log(respString);
                 var parsedJSON = JSON.parse(respString);
 
                 // resp parsed, copy it to our response object
                 var airport = parsedJSON.airports[0];
-                console.log(airport);
                 nearestairport.city     = airport.city;
                 nearestairport.code     = airport.code;
                 nearestairport.country  = airport.country;
@@ -130,7 +127,6 @@ function GetNearestAirport(lat, lon) {
                 nearestairport.lng      = airport.lng;
                 nearestairport.name     = airport.name;
                 nearestairport.timezone = airport.timezone
-                console.log(nearestairport);
             })
             .fail(function (resp) {
                 console.log('Nearest Airport lookup failed');
@@ -169,7 +165,6 @@ function AirportInfo(code) {
                 jsonBack.name   = resp.name;
                 jsonBack.status = resp.status;
                 jsonBack.weather = resp.weather;
-                console.log(jsonBack);
             })
             .fail(function (resp) {
                 console.log("GetAirportInfo failed.")
@@ -178,6 +173,14 @@ function AirportInfo(code) {
 
     this.getAirportInfo(code, this.respJSON);
 }
+
+var forecast1 = new WeatherForecast(); 
+var resp1 = forecast1.getForecastByCity('New York'); 
+
+ 
+setTimeout(function() { 
+    console.log(resp1.responseJSON); 
+},1500 ); 
 
 
 // keep this
