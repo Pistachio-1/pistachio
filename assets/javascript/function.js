@@ -77,7 +77,7 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
             delay += 'no delays';
         };
         $("#airport").text(delay);
-    }, 1200);
+    }, 1500);
 
 });
 
