@@ -156,18 +156,19 @@ function AirportInfo(code) {
     this.respJSON = {};
 
     // get current airport info from the FAA using iata code (i.e. LAX)
-    this.getAirportInfo = function(code, returnedJSON) {
+    this.getAirportInfo = function(code, jsonBack) {
         var qstring = this.FAAURL + code + this.FAAFORMAT;
         return $.get(qstring)
             .done(function(resp) {
-                returnedJSON.IATA   = resp.IATA;
-                returnedJSON.IACO   = resp.IACO;
-                returnedJSON.city   = resp.city;
-                returnedJSON.delay  = resp.delay;
-                returnedJSON.state  = resp.state;
-                returnedJSON.name   = resp.name;
-                returnedJSON.status = resp.status;
-                returnedJSON.weather = resp.weather;
+                jsonBack.IATA   = resp.IATA;
+                jsonBack.IACO   = resp.IACO;
+                jsonBack.city   = resp.city;
+                jsonBack.delay  = resp.delay;
+                jsonBack.state  = resp.state;
+                jsonBack.name   = resp.name;
+                jsonBack.status = resp.status;
+                jsonBack.weather = resp.weather;
+                console.log(jsonBack);
             })
             .fail(function (resp) {
                 console.log("GetAirportInfo failed.")
