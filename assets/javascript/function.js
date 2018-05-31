@@ -5,14 +5,14 @@ var config = {
     projectId: "pistachio-4a3df",
     storageBucket: "pistachio-4a3df.appspot.com",
     messagingSenderId: "1062361334522"
-  };
- firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 var database = firebase.database();
 
 
 //pulling input information and pushing it to firebase
-$(".submit").on("click",function(event){
+$(".submit").on("click", function (event) {
     event.preventDefault();
 
     var name = $("#name-input").val().trim();
@@ -29,34 +29,34 @@ $(".submit").on("click",function(event){
 
     database.ref().push(key);
 
-    location.href="agenda.html"
+    location.href = "agenda.html"
 
 });
 
 
 
 //referring to firebase to get information and appending it
-database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
+database.ref().limitToLast(1).on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val());
- 
+
     var name = childSnapshot.val().name;
     var location = childSnapshot.val().location;
     var departing = childSnapshot.val().departing;
     var returning = childSnapshot.val().returning;
-  
+
     $("#name-display").append(name + "'s");
     $("#city-display").append(location);
     $("#departing-display").append(departing.toString("MMM DD YYYY"));
     $("#returning-display").append(returning.toString("MMM DD YYYY"));
 
     var airports = {
-        "New York City" :"JFK",
-        "Chicago" : "ORD",
-        "Las Vegas" : "LAS",
-        "Los Angeles" : "LAX",
-        "Miami" : "MIA",
-        "San Francisco" : "SFO",
-        "Seattle" : "SEA",
+        "New York City": "JFK",
+        "Chicago": "ORD",
+        "Las Vegas": "LAS",
+        "Los Angeles": "LAX",
+        "Miami": "MIA",
+        "San Francisco": "SFO",
+        "Seattle": "SEA",
     }
     var x = airports[location]
 
@@ -77,6 +77,24 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
             delay += 'no delays';
         };
         $("#airport").text(delay);
+    }, 1500);
+
+    var forecast = new WeatherForecast();
+    var resp = forecast1.getForecastByCity(location);
+    var tempArr = [];
+
+    setTimeout(function () {
+        console.log(resp.responseJSON);
+        for(let i=0; i < 5; ++i) {
+            var maxTemp = Math.floor(resp.responseJSON.list[i].temp.max) + ' degrees';
+            var icon    = resp.responseJSON.list[i].weather[0].icon;
+            var weather = resp.responseJSON.list[i].weather[0].main;
+            var weatherObj = {};
+            var weatherid = '#weather' + i;
+            $(weatherid).text(maxTemp);
+        };
+
+
     }, 1500);
 
 });
