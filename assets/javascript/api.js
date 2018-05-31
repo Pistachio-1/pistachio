@@ -108,6 +108,7 @@ function GetNearestAirport(lat, lon) {
     this.getNearestAirport = function (lat, lon, nearestairport) {
         // aero accept lat/lon in url, not in query parameters
         var qstring = this.AEROURL + lat + '/' + lon + '?user_key=' + this.AEROAPIKEY;
+        console.log(qstring);
         return $.get(qstring)
             .done(function (resp) {
                 console.log(nearestairport);

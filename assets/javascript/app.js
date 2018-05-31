@@ -116,36 +116,6 @@ $(".dayFiveButton").click(function () {
     });
 });
 
-
-// get the nearest major airport for the city. this requires
-// daisy chaining some api calls
-var cityGeoLocation = '';
-var cityAirportInfo = '';
-var airportInfo = '';
-var airportLat = '';
-var airportLon = '';
-
-// first get city lat/lon.
-cityGeoLocation = new CityLocation('San Francisco');
-setTimeout(function () {
-    var cityInfo = cityGeoLocation.responseJSON;
-    // console.log(cityAirportInfo);
-    airportLat = cityInfo.lat;
-    airportLon = cityInfo.lon;
-    // console.log(airportLat, airportLon);
-
-    // get the nearest major airport to that city. We want the IATA code.
-    var nearestAirport = '';
-    var iataCode = '';
-    nearestAirport = new GetNearestAirport(airportLat, airportLon);
-    setTimeout(function () {
-        console.log(nearestAirport.responseJSON);
-        iataCode = nearestAirport.responseJSON.code;
-        console.log(iataCode);
-    }, 500);
-
-}, 2000);
-
 airportInfo = new AirportInfo('SFO');
 setTimeout(function () {
     var resp = airportInfo.respJSON;
