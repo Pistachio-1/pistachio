@@ -87,7 +87,7 @@ database.ref().limitToLast(1).on("child_added", function (childSnapshot) {
         console.log(resp.responseJSON);
         for(let i=0; i < 5; ++i) {
             var maxTemp = Math.floor(resp.responseJSON.list[i].temp.max) + ' degrees';
-            var icon    = 'http://openweathermap.org/img/w/' + 
+            var icon    = 'https://openweathermap.org/img/w/' + 
                             resp.responseJSON.list[i].weather[0].icon +
                             '.png';
             var weather = resp.responseJSON.list[i].weather[0].main;
