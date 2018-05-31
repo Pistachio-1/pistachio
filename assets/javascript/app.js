@@ -116,6 +116,23 @@ $(".dayFiveButton").click(function() {
     });
 });
 
+var airportInfo = '';
+var delay = ''
+airportInfo = new AirportInfo('ORD');
+setTimeout(function() { 
+    // console.log(airportInfo.respJSON); 
+    var resp = airportInfo.respJSON;
+    delay = resp.name + ' ';
+    if (resp.delay) {
+        delay += 'Avg delay ' + resp.status.avgDelay 
+        + ' reason ' + resp.status.reason;
+    } else {
+        delay += 'no delays';
+    };
+    // console.log(delay);
+    $("#airport").text(delay);
+},1200);
+
 
 
 
