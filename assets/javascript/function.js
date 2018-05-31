@@ -64,7 +64,7 @@ database.ref().limitToLast(1).on("child_added", function(childSnapshot) {
     setTimeout(function () {
         var resp = airportInfo.respJSON;
         var delay = resp.name + ' ';
-        if (resp.delay) {
+        if (resp.delay === true) {
             if (resp.status.avgDelay.length > 0) {
                 delay += 'average delay ' + resp.status.avgDelay
                     + ' reason ' + resp.status.reason;
