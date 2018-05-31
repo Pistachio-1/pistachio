@@ -22,7 +22,8 @@ function WeatherForecast() {
 
     this.OWFORECASTPARMS = {
         appid: this.OWAPIKEY,
-        cnt: 5
+        cnt: 5,
+        units: 'imperial'
     };
 
     this.makeQueryString = function (params) {
@@ -172,6 +173,14 @@ function AirportInfo(code) {
 
     this.getAirportInfo(code, this.respJSON);
 }
+
+var forecast1 = new WeatherForecast(); 
+var resp1 = forecast1.getForecastByCity('New York'); 
+
+ 
+setTimeout(function() { 
+    console.log(resp1.responseJSON); 
+},1500 ); 
 
 
 // keep this
