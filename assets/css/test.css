@@ -1,18 +1,25 @@
-.slide-container {
-    overflow: auto;
-    flex-wrap: nowrap;
-    display: flex;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 90% ;
-    opacity: 20%;
-    border: solid #2c2c2c2c 5px;
-    text-align: center;
+.recommended h2{
+  font-size: 23px;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 0;
+  margin-top: 50px;
 }
 
+.slide-container {
+  overflow: auto;
+  flex-wrap: nowrap;
+  display: flex;
+  margin: 0 auto;
+  width: 90% ;
+  opacity: 20%;
+  text-align: center;
+}
+
+
 img {
-    width: 300px;
-    height: 200px;
+  width: 300px;
+  height: 200px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway);

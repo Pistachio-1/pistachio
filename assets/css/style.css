@@ -49,9 +49,11 @@ input {
 
 .submit {
     margin-top: 15px;
+    margin-right: 15px;
     background-color: rgb(46, 79, 141);
     padding: 2px 25px;
     font-size: 15px;
+    float: right;
 }
 
 .top {

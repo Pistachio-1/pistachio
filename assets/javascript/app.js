@@ -106,22 +106,6 @@ $(".dayFourButton").click(function() {
     });
 });
 
-<<<<<<< HEAD
-(function($) {
-    "use strict";
-
-    // manual carousel controls
-    $('.next').click(function(){ 
-        $('.carousel').carousel('next');
-        return false; 
-    });
-    $('.prev').click(function(){ 
-        $('.carousel').carousel('prev');
-        return false; 
-    });
-    
-})
-=======
 $(".dayFiveButton").click(function() {
     event.preventDefault();
     var dayFiveTask = $("#dayFiveInput").val().trim();
@@ -133,7 +117,6 @@ $(".dayFiveButton").click(function() {
 });
 
 
->>>>>>> master
 
 
 
