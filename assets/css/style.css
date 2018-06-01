@@ -13,6 +13,8 @@
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+select option { color:black;}
+
  .agenda {
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: bold;

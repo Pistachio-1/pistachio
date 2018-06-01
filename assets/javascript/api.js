@@ -1,20 +1,3 @@
-/* Functions to return city informaiton and weather forecasts. Functions using Ajax should be called with the done
-    method and may optionally be called with the fail method chained to them.
-    i.e. getForecastByCity('New York').done(function(resp) {console.log(resp)}).fail(function() {console.log("something went wrong")});
-
-    Here is an example of how to return values
-    var lon = -117.8282121;
-    var lat = 33.658895099999995;
-
-    var resp1 = getForecastByLatLon(lat, lon);
-    var resp2 = getForecastByCity('New York');
-
-    // now wait 3 seconds for the async calls to complete
-    setTimeout(function() {
-        console.log(resp1.responseJSON);
-        console.log(resp2.responseJSON);
-    },3000 );
-*/
 
 function WeatherForecast() {
     this.OWAPIKEY = 'e04dc2a2ae502b3bb7f9ee699ba2a841';
@@ -48,12 +31,6 @@ function WeatherForecast() {
     }
 }
 
-/* 
- * get the lat/lon for a city. City name is required. State/Province is optional but results will be better with it
- *   The calls below will return different locations for Augusta Maine and Augusta Georgia
- *   var resp1 = getCityGeolocation('Augusta', 'Maine');
- *   var resp2 = getCityGeolocation('Augusta'));
- */
 function CityLocation(city, st) {
     var GOOGLEAPIKEY = 'AIzaSyA7fYWzc8eCBfNRbGVQ5V__CadS5B939_s';
     var GOOGLEURL = 'https://maps.googleapis.com/maps/api/geocode/json?';
@@ -97,10 +74,6 @@ function CityLocation(city, st) {
     this.getCityLocation(GOOGLEURL, this.qstring, this.responseJSON);
 }
 
-/*
- * get the nearest airport to a given lat/lon.
-*/
-
 function GetNearestAirport(lat, lon) {
     this.AEROAPIKEY = 'be776e50de631b22ee12cb993e1f06bf';
     this.AEROURL = 'https://airport.api.aero/airport/nearest/';
@@ -138,13 +111,6 @@ function GetNearestAirport(lat, lon) {
     }
     this.getNearestAirport(lat, lon, this.responseJSON);
 }
-
-/*
- * Get airport info from the FAA
- * for airport status: https://services.faa.gov/airport/status/sfo?format=application/json
- * Construct with var airportData = new AirportInfo('SFO');
- * Then extract with airportData.airportInfo.
- */
 
 
 function AirportInfo(code) {
